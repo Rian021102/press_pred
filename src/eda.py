@@ -12,4 +12,9 @@ def perform_eda(X_train,y_train):
     # plot histogram for each feature
     df.hist(bins=30, figsize=(10, 10))
     plt.show()
+    # plot correlation matrix heatmap
+    plt.figure(figsize=(10, 6))
+    sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+    plt.show()
+    
     
