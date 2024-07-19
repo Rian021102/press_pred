@@ -5,8 +5,9 @@ from sklearn.neighbors import KDTree
 #load excel file
 def load_las(file):
     df=pd.read_csv(file)
-    df.drop(columns=['DT','UNKNOWN:1', 'UNKNOWN:2','UNKNOWN:3', 'UNKNOWN:4', 
-                         'UNKNOWN:5', 'UNKNOWN:6', 'UNKNOWN:7'], inplace=True)
+    # df.drop(columns=['DT','UNKNOWN:1', 'UNKNOWN:2','UNKNOWN:3', 'UNKNOWN:4', 
+    #                      'UNKNOWN:5', 'UNKNOWN:6', 'UNKNOWN:7'], inplace=True)
+    df.drop(columns=['DT'], inplace=True)
     df.rename(columns={'well':'WELL_NAME'}, inplace=True)
     df['DEPTH']=df['DEPTH'].astype(float)
     return df
@@ -23,8 +24,8 @@ def load_excel(file):
 
 
 
-file_ex='/Users/rianrachmanto/pypro/project/press_pred/data/GSA_MDT-RFT_data.xlsx'
-file_las='/Users/rianrachmanto/pypro/project/press_pred/data/Sepinggan Data for Pressure Prediction (OH + MudLog)/all_well.csv'
+file_ex='/Users/rianrachmanto/pypro/data/data_press/GSA_MDT-RFT_data.xlsx'
+file_las='/Users/rianrachmanto/pypro/data/SPG Logs for Pressure Prediction/all_well_new.csv'
 
 df_las=load_las(file_las)
 df_ex=load_excel(file_ex)
@@ -50,5 +51,5 @@ def copy_pressure(df_las, df_ex):
 
 df_las=copy_pressure(df_las, df_ex)
 #save to csv
-df_las.to_csv('/Users/rianrachmanto/pypro/project/press_pred/data/Sepinggan Data for Pressure Prediction (OH + MudLog)/all_well_pressure.csv', index=False)
+df_las.to_csv('/Users/rianrachmanto/pypro/data/SPG Logs for Pressure Prediction/all_well_pressure_new.csv', index=False)
 print(df_las.head())

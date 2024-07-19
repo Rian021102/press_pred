@@ -9,7 +9,7 @@ def read_las(file_path):
     df = las_file.df()
     return df
 
-path='/Users/rianrachmanto/pypro/project/press_pred/data/Sepinggan Data for Pressure Prediction (OH + MudLog)'
+path='/Users/rianrachmanto/pypro/data/SPG Logs for Pressure Prediction'
 
 #iterate through all las files in the folder, add colomn called 'well' based on the file name without _Logs suffix
 list_las=[]
@@ -25,4 +25,4 @@ print(list_las)
 #concatenate all dataframes in the list
 df = pd.concat(list_las)
 #save the dataframe to csv
-df.to_csv('/Users/rianrachmanto/pypro/project/press_pred/data/Sepinggan Data for Pressure Prediction (OH + MudLog)/all_well.csv')
+df.to_csv('/Users/rianrachmanto/pypro/data/SPG Logs for Pressure Prediction/all_well_new.csv')

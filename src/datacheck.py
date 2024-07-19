@@ -23,7 +23,7 @@ def clean_train(X_train,y_train):
     df=pd.concat([X_train,y_train],axis=1)
     #drop WELL_NAME, C1,C2, C3
     df.drop(['WELL_NAME','NPHI','C1','C2',
-             'C3','IC4','NC4','IC5','NC5'],axis=1,inplace=True)
+              'C3','IC4','IC5','NC5'],axis=1,inplace=True)
     #drop rows with missing values
     df.dropna(inplace=True)
     #split the data into X_train and y_train
@@ -36,7 +36,7 @@ def clean_test(X_test,y_test):
     df=pd.concat([X_test,y_test],axis=1)
     #drop WELL_NAME
     df.drop(['WELL_NAME','NPHI','C1','C2','C3',
-             'IC4','NC4','IC5','NC5'],axis=1,inplace=True)
+              'IC4','IC5','NC5'],axis=1,inplace=True)
     #drop rows with missing values
     df.dropna(inplace=True)
     #split the data into X_train and y_train

@@ -16,11 +16,11 @@ def predict(df):
 
 def main():
     #import las
-    las_file = las.read('/Users/rianrachmanto/pypro/project/press_pred/data/SJ-2RD2BP1_OH Log + Mudlog 1.las')
+    las_file = las.read('/Users/rianrachmanto/pypro/data/SJ-3RD2_OH Log + Mudlog 1.las')
     df = las_file.df()
     df = df.reset_index()
-    # drop column DT
-    df = df.drop(columns=['DT'])
+    df.drop(['NPHI','C1','C2',
+             'C3','IC4','NC4','IC5','NC5','MW'],axis=1,inplace=True)
     df = df.dropna()
     #predict
     prediction = predict(df)
@@ -30,7 +30,7 @@ def main():
     df['PPG']=df['PRESSURE']/0.052/df['DEPTH']
     print(df.tail(10))
     #save to excel
-    df.to_excel('/Users/rianrachmanto/pypro/project/press_pred/data/pre_sejad2RDtwo.xlsx', index=False)
+    df.to_excel('/Users/rianrachmanto/pypro/data/data_press/sjd-3.xlsx', index=False)
     #df.to_csv('/Users/rianrachmanto/pypro/project/press_pred/data/pre_sejad3RDtwo.csv', index=False)
 if __name__ == '__main__':
     main()
